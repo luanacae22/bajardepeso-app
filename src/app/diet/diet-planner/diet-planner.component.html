@@ -1,14 +1,63 @@
 <ul>
   <article>
 
-    Alimento 1
+    <header>
     
+      <div class="image">
+        <img src="http://fakeimg.pl/300x300" alt="">
+      </div>
+      
+      <div class="title">
+        <h4>
+          Nombre de Alimento
+        </h4>
+      </div>
+
+      <div class="availability not-available">
+        No disponible
+      </div>
+          
+    </header>
+    
+
+    <section class="food-info">
+
+      <div class="calory-count">
+        <h3>
+          9999 Cal.
+        </h3>
+      </div>
+
+      <div class="quantity">
+        <label>
+          <span>
+            Unidades
+          </span>
+          
+          <input type="number">
+
+        </label>
+      </div>
+
+    </section>
+
+
     <footer>
       <a routerLink="/alimentos/0">
         <button>
-          Información
+          Ver
         </button>
       </a>
+      <a routerLink="/alimentos/comprar/0">
+        <button>
+          Comprar
+        </button>
+      </a>
+
+      <button (click)="addFood(0)">
+        Añadir
+      </button>
+
     </footer>
 
   </article> 

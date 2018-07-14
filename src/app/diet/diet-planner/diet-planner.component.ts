@@ -12,4 +12,8 @@ export class DietPlannerComponent implements OnInit {
   ngOnInit() {
   }
 
+  addFood( id: number ) {
+    console.log( "add Food", id );
+  }
+
 }
