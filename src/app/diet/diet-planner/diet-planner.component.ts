@@ -7,13 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DietPlannerComponent implements OnInit {
 
+  private quantity: number;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+
+  handleQuantityChange( quantity ) {
+    this.quantity = quantity; 
+  }
+
   addFood( id: number ) {
-    console.log( "add Food", id );
+    console.log( "add Food", id, "quantity:", this.quantity );
   }
 
 }

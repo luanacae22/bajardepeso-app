@@ -33,8 +33,10 @@
           <span>
             Unidades
           </span>
-          
-          <input type="number">
+
+          <input #quantityInput type="number"
+          (keyup)="handleQuantityChange(quantityInput.value)"
+          >
 
         </label>
       </div>
@@ -43,11 +45,13 @@
 
 
     <footer>
+
       <a routerLink="/alimentos/0">
         <button>
           Ver
         </button>
       </a>
+      
       <a routerLink="/alimentos/comprar/0">
         <button>
           Comprar
