@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from "./home/home-page/home-page.component";
 
 import { DietModule } from "./diet/diet.module";
+import { FoodModule } from "./food/food.module";
 import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
@@ -17,9 +18,10 @@ import { SharedModule } from "./shared/shared.module";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SharedModule,
-    DietModule
+    DietModule,
+    FoodModule,
+    AppRoutingModule,
   ],
   providers: [
     SharedModule,
