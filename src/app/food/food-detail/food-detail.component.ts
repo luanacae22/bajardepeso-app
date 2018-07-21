@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+
+import { Food } from "../food.model";
 
 @Component({
   selector: 'food-detail',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodDetailComponent implements OnInit {
 
-  constructor() { }
+  public food: Food;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    // obtener listado de alimentos
+    this.food = this.route.snapshot.data['food'] || {};
+    
   }
 
 }

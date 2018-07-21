@@ -11,12 +11,19 @@ export class FoodService {
 
   private endpointUrl: string = 'api/foodItems';
 
-  constructor( private http: HttpClient ) { }
-  
-  fetchFoods() : Observable<Food[]> {
+  constructor(private http: HttpClient) { }
+
+  fetchFoods(): Observable<Food[]> {
 
     return this.http
-    .get<Food[]>(`${this.endpointUrl}/`)
+      .get<Food[]>(`${this.endpointUrl}/`)
+
+  }
+
+  fetchFood( food_id: number ): Observable<Food> {
+
+    return this.http
+    .get<Food>(`${this.endpointUrl}/${food_id}/`)
     
   }
 

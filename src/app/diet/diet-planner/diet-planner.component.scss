@@ -16,6 +16,14 @@ header, .food-info {
 
 }
 
+
+.food {
+    header {
+        .not-available {
+            color: red;
+        }
+    }
+}
 * {
     text-align: center;        
 }

@@ -2,7 +2,7 @@
   <div class="choose_foods" *ngSwitchCase="0">
     
     <ul>
-      <article *ngFor="let food of foods; index as i">
+      <article class="food" *ngFor="let food of foods; index as i">
         
         <header>
           
@@ -18,8 +18,13 @@
               </h4>
             </div>
             
-            <div class="availability not-available">
-              No disponible
+            <div class="availability" [ngClass]="{'not-available':food.stock<=0}">
+              <span *ngIf="food.stock>0; else notAvailable">
+                {{food.stock}} disponibles
+              </span>
+              <ng-template #notAvailable>
+                No disponible
+              </ng-template>
             </div>
             
           </div>
@@ -31,7 +36,7 @@
           
           <div class="calory-count">
             <h3>
-              9999 Cal.
+              {{food.calories}} Cal.
             </h3>
           </div>
           
@@ -53,13 +58,13 @@
         
         <footer>
           
-          <a routerLink="/alimentos/0">
+          <a [routerLink]="['/alimentos',food.id]">
             <button>
               Ver
             </button>
           </a>
           
-          <a routerLink="/alimentos/comprar/0">
+          <a [routerLink]="['/alimentos/comprar',food.id]">
             <button>
               Comprar
             </button>

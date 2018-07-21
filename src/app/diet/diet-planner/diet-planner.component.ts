@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FoodService } from '../../food/food.service';
+import { ActivatedRoute } from "@angular/router";
 
 import { Food } from "../../food/food.model";
 
@@ -45,14 +45,16 @@ export class DietPlannerComponent implements OnInit {
     'Cena',
   ];
   
-  constructor(private foodService: FoodService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
 
     // obtener listado de alimentos
-
-    this.foodService.fetchFoods()
-    .subscribe( foods => this.foods = foods );
+    this.foods = this.route.snapshot.data['foods'] || {};
+    
+    // antes de usar 'resolver', hacíamos fetch directo
+    // this.foodService.fetchFoods()
+    // .subscribe( foods => this.foods = foods );
 
     this.currentState = this.states.CHOOSE_FOOD;  
   }
