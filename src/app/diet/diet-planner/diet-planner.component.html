@@ -1,20 +1,20 @@
 <div class="diet-planner-container" [ngSwitch]="currentState">
-  <div class="choose-foods" *ngSwitchCase="0">
+  <div class="choose_foods" *ngSwitchCase="0">
     
     <ul>
-      <article>
+      <article *ngFor="let food of foods; index as i">
         
         <header>
           
           <div class="image">
-            <img src="http://fakeimg.pl/300x300" alt="">
+            <img src="{{food.image}}" alt="">
           </div>
           
           <div class="text">
             
             <div class="title">
               <h4>
-                Nombre de Alimento
+                {{food.name}}
               </h4>
             </div>
             

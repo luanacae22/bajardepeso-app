@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FoodService } from '../../food/food.service';
+import { log } from 'util';
 
 enum COMPONENT_STATES {
   CHOOSE_FOOD = 0,
@@ -22,6 +24,7 @@ export class DietPlannerComponent implements OnInit {
 
   public activeDay: number = null;
 
+  public foods;
 
   public days = [
     'Lunes',
@@ -41,10 +44,16 @@ export class DietPlannerComponent implements OnInit {
     'Cena',
   ];
   
-  constructor() { }
+  constructor(private foodService: FoodService) { }
 
   ngOnInit() {
-    this.currentState = this.states.CHOOSE_MEAL;  
+
+    // obtener listado de alimentos
+
+    this.foodService.fetchFoods()
+    .subscribe( foods => this.foods = foods );
+
+    this.currentState = this.states.CHOOSE_FOOD;  
   }
 
 

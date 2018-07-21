@@ -78,3 +78,11 @@ footer {
     }
 }
 
+
+
+.choose_foods {
+    &>ul {
+        height: 70vh;
+        overflow-y: auto;
+    }
+}
