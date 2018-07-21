@@ -44,7 +44,7 @@ export class DietPlannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.currentState = this.states.CHOOSE_FOOD;  
+    this.currentState = this.states.CHOOSE_MEAL;  
   }
 
 
@@ -75,7 +75,7 @@ export class DietPlannerComponent implements OnInit {
     this.currentState = this.states.CHOOSE_MEAL;
 
     this.activeDay = number; 
-    
+
     console.log("choose day", number );
     
   }

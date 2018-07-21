@@ -48,7 +48,7 @@ footer {
 .meal_selector {
     .meal_list > li {
         display: flex;
-
+        margin-bottom: 1rem;
         &> * {
             display: flex;
             align-items: center;
@@ -61,6 +61,20 @@ footer {
         }
         .food_items {
             width: 50%;
+            flex-wrap: wrap;
+            justify-content: center;
+
+
+            .food-preview {
+                position: relative;
+                margin: .5rem;
+                button.remove {
+                    position: absolute;
+                    top: -.5rem;
+                    right: 0;
+                }
+            }
         }
     }
 }
+
