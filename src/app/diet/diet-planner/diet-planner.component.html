@@ -1,3 +1,263 @@
-<p>
-  diet-planner works!
-</p>
+<div class="diet-planner-container" [ngSwitch]="currentState">
+  <div class="choose_foods" *ngSwitchCase="0">
+    
+    <ul>
+      <article class="food" *ngFor="let food of foods; index as i">
+        
+        <header>
+          
+          <div class="image">
+            <img src="{{food.image}}" alt="">
+          </div>
+          
+          <div class="text">
+            
+            <div class="title">
+              <h4>
+                {{food.name}}
+              </h4>
+            </div>
+            
+            <div class="availability" [ngClass]="{'not-available':food.stock<=0}">
+              <span *ngIf="food.stock>0; else notAvailable">
+                {{food.stock}} disponibles
+              </span>
+              <ng-template #notAvailable>
+                No disponible
+              </ng-template>
+            </div>
+            
+          </div>
+          
+        </header>
+        
+        
+        <section class="food-info">
+          
+          <div class="calory-count">
+            <h3>
+              {{food.calories}} Cal.
+            </h3>
+          </div>
+          
+          <div class="quantity">
+            <label>
+              <span>
+                Unidades
+              </span>
+              
+              <input #quantityInput type="number"
+              (change)="handleQuantityChange(quantityInput.value)"
+              >
+              
+            </label>
+          </div>
+          
+        </section>
+        
+        
+        <footer>
+          
+          <a [routerLink]="['/alimentos',food.id]">
+            <button>
+              Ver
+            </button>
+          </a>
+          
+          <a [routerLink]="['/alimentos/comprar',food.id]">
+            <button>
+              Comprar
+            </button>
+          </a>
+          
+          <button (click)="addFood(0)">
+            Añadir
+          </button>
+          
+        </footer>
+        
+      </article> 
+    </ul>
+    
+    <footer class="day-selector">
+      <nav>
+        <ul>
+          <li *ngFor="let day of days; index as i;" (click)="chooseDay(i)">
+            <h2>
+              {{day[0]}}
+            </h2>
+            <div class="calories_count">
+              <h5>
+                <span class="number">
+                  9999
+                </span>
+                <span class="unit">
+                  Cal.
+                </span>
+              </h5>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+    
+    
+  </div>
+  
+  
+  
+  
+  <section class="day_selector" *ngSwitchCase="1">
+    
+    <h1>
+      Elegir Día
+    </h1>
+    
+    <ul>
+      <li *ngFor="let day of days; index as i" (click)="chooseDay(i)">
+        <h2>
+          {{ day[0] }}
+        </h2>
+        <div class="calories_count">
+          <h5>
+            <span class="number">
+              9999
+            </span>
+            <span class="unit">
+              Cal.
+            </span>
+          </h5>
+        </div>
+        
+      </li>
+    </ul>
+    
+    <button (click)="returnToList()">
+      Regresar
+    </button>
+    
+  </section>
+  
+  
+  <section class="meal_selector" *ngSwitchCase="2">
+    
+    <h1>
+      {{ days[activeDay] }}
+    </h1>
+    
+    <ul class="meal_list">
+      <li *ngFor="let meal of meals; index as i" (click)="chooseMeal(i)">
+        
+        <div class="icon-text">
+          <i class="fa fa-icon"></i>
+          <span class="label">
+            {{meal}}
+          </span>
+        </div>
+        
+        <div class="calories_count">
+          <h5>
+            <span class="number">
+              9999
+            </span>
+            <span class="unit">
+              Cal.
+            </span>
+          </h5>
+        </div>
+        
+        <ul class="food_items">
+            <li class="food-preview">
+                <button class="remove">
+                  <span>
+                    X
+                  </span>
+                </button>
+                <div class="image">
+                  <img src="http://fakeimg.pl/48x48?text=food" alt="">
+                </div>
+              </li>
+              <li class="food-preview">
+                <button class="remove">
+                  <span>
+                    X
+                  </span>
+                </button>
+                <div class="image">
+                  <img src="http://fakeimg.pl/48x48?text=food" alt="">
+                </div>
+              </li>          
+          <li class="food-preview">
+            <button class="remove">
+              <span>
+                X
+              </span>
+            </button>
+            <div class="image">
+              <img src="http://fakeimg.pl/48x48?text=food" alt="">
+            </div>
+          </li>
+          <li class="food-preview">
+            <button class="remove">
+              <span>
+                X
+              </span>
+            </button>
+            <div class="image">
+              <img src="http://fakeimg.pl/48x48?text=food" alt="">
+            </div>
+          </li>
+          <li class="food-preview">
+            <button class="remove">
+              <span>
+                X
+              </span>
+            </button>
+            <div class="image">
+              <img src="http://fakeimg.pl/48x48?text=food" alt="">
+            </div>
+          </li>
+          <li class="food-preview">
+            <button class="remove">
+              <span>
+                X
+              </span>
+            </button>
+            <div class="image">
+              <img src="http://fakeimg.pl/48x48?text=food" alt="">
+            </div>
+          </li>
+          <li class="food-preview">
+            <button class="remove">
+              <span>
+                X
+              </span>
+            </button>
+            <div class="image">
+              <img src="http://fakeimg.pl/48x48?text=food" alt="">
+            </div>
+          </li>                                                                    
+          <li class="food-preview">
+            <button class="remove">
+              <span>
+                X
+              </span>
+            </button>
+            <div class="image">
+              <img src="http://fakeimg.pl/48x48?text=food" alt="">
+            </div>
+          </li>
+        </ul>
+        
+      </li>
+    </ul>
+    
+    <button (click)="returnToDaySelector()">
+      Regresar
+    </button>
+  </section>
+  
+  
+  
+  
+</div>
