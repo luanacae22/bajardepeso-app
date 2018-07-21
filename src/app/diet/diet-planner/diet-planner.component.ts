@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodService } from '../../food/food.service';
-import { log } from 'util';
+
+import { Food } from "../../food/food.model";
 
 enum COMPONENT_STATES {
   CHOOSE_FOOD = 0,
@@ -24,7 +25,7 @@ export class DietPlannerComponent implements OnInit {
 
   public activeDay: number = null;
 
-  public foods;
+  public foods: Food[];
 
   public days = [
     'Lunes',

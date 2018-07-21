@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
+import { Food } from "./food.model";
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,10 +13,10 @@ export class FoodService {
 
   constructor( private http: HttpClient ) { }
   
-  fetchFoods() {
+  fetchFoods() : Observable<Food[]> {
 
     return this.http
-    .get(`${this.endpointUrl}/`)
+    .get<Food[]>(`${this.endpointUrl}/`)
     
   }
 
