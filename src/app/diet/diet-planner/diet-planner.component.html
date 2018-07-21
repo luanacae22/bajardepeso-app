@@ -1,68 +1,181 @@
-<ul>
-  <article>
-
-    <header>
+<div class="diet-planner-container" [ngSwitch]="currentState">
+  <div class="choose-foods" *ngSwitchCase="0">
     
-      <div class="image">
-        <img src="http://fakeimg.pl/300x300" alt="">
-      </div>
-      
-      <div class="title">
-        <h4>
-          Nombre de Alimento
-        </h4>
-      </div>
-
-      <div class="availability not-available">
-        No disponible
-      </div>
+    <ul>
+      <article>
+        
+        <header>
           
-    </header>
-    
+          <div class="image">
+            <img src="http://fakeimg.pl/300x300" alt="">
+          </div>
+          
+          <div class="text">
+            
+            <div class="title">
+              <h4>
+                Nombre de Alimento
+              </h4>
+            </div>
+            
+            <div class="availability not-available">
+              No disponible
+            </div>
+            
+          </div>
+          
+        </header>
+        
+        
+        <section class="food-info">
+          
+          <div class="calory-count">
+            <h3>
+              9999 Cal.
+            </h3>
+          </div>
+          
+          <div class="quantity">
+            <label>
+              <span>
+                Unidades
+              </span>
+              
+              <input #quantityInput type="number"
+              (change)="handleQuantityChange(quantityInput.value)"
+              >
+              
+            </label>
+          </div>
+          
+        </section>
+        
+        
+        <footer>
+          
+          <a routerLink="/alimentos/0">
+            <button>
+              Ver
+            </button>
+          </a>
+          
+          <a routerLink="/alimentos/comprar/0">
+            <button>
+              Comprar
+            </button>
+          </a>
+          
+          <button (click)="addFood(0)">
+            Añadir
+          </button>
+          
+        </footer>
+        
+      </article> 
+    </ul>
 
-    <section class="food-info">
-
-      <div class="calory-count">
-        <h3>
-          9999 Cal.
-        </h3>
-      </div>
-
-      <div class="quantity">
-        <label>
-          <span>
-            Unidades
-          </span>
-
-          <input #quantityInput type="number"
-          (keyup)="handleQuantityChange(quantityInput.value)"
-          >
-
-        </label>
-      </div>
-
-    </section>
-
-
-    <footer>
-
-      <a routerLink="/alimentos/0">
-        <button>
-          Ver
-        </button>
-      </a>
-      
-      <a routerLink="/alimentos/comprar/0">
-        <button>
-          Comprar
-        </button>
-      </a>
-
-      <button (click)="addFood(0)">
-        Añadir
-      </button>
-
+    <footer class="day-selector">
+      <nav>
+        <ul>
+          <li *ngFor="let day of days; index as i;" (click)="chooseDay(i)">
+            <h2>
+              {{day[0]}}
+            </h2>
+            <div class="calories_count">
+              <h5>
+                <span class="number">
+                  9999
+                </span>
+                <span class="unit">
+                  Cal.
+                </span>
+              </h5>
+            </div>
+          </li>
+        </ul>
+      </nav>
     </footer>
+    
+    
+  </div>
+  
+  
+  
+  
+  <section class="day_selector" *ngSwitchCase="1">
+    
+    <h1>
+      Elegir Día
+    </h1>
+    
+    <ul>
+      <li *ngFor="let day of days; index as i" (click)="chooseDay(i)">
+        <h2>
+          {{ day[0] }}
+        </h2>
+        <div class="calories_count">
+            <h5>
+              <span class="number">
+                9999
+              </span>
+              <span class="unit">
+                Cal.
+              </span>
+            </h5>
+        </div>
+        
+      </li>
+    </ul>
+    
+    <button (click)="returnToList()">
+      Regresar
+    </button>
+    
+  </section>
+  
+  
+  <section class="meal_selector" *ngSwitchCase="2">
+    
+    <h1>
+      {{ days[activeDay] }}
+    </h1>
+    
+    <ul class="meal_list">
+      <li *ngFor="let meal of meals; index as i" (click)="chooseMeal(i)">
+        
+        <div class="icon-text">
+          <i class="fa fa-icon"></i>
+          <span class="label">
+            {{meal}}
+          </span>
+        </div>
 
-  </article> 
-</ul>
+        <div class="calories_count">
+          <h5>
+            <span class="number">
+              9999
+            </span>
+            <span class="unit">
+              Cal.
+            </span>
+          </h5>
+        </div>
+
+        <ul class="food_items">
+          <li>
+            Food Item
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+    
+    <button (click)="returnToDaySelector()">
+      Regresar
+    </button>
+  </section>
+  
+  
+  
+  
+</div>
