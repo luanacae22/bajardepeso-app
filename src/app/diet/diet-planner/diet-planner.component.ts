@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 import { Food } from "../../food/food.model";
+import { FoodService } from '../../food/food.service';
 
 enum COMPONENT_STATES {
   CHOOSE_FOOD = 0,
@@ -45,13 +46,22 @@ export class DietPlannerComponent implements OnInit {
     'Cena',
   ];
   
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private foodService: FoodService) { }
 
   ngOnInit() {
 
     // obtener listado de alimentos
     this.foods = this.route.snapshot.data['foods'] || {};
     
+    this.foods.map( food => {
+      
+      this.foodService.fetchMeasurementUnitData(food.measurement_unit)
+      .subscribe( measurementUnit => {
+        food.measurement_unit_labels = measurementUnit.labels;
+      })
+    
+    });
+
     // antes de usar 'resolver', hacíamos fetch directo
     // this.foodService.fetchFoods()
     // .subscribe( foods => this.foods = foods );
