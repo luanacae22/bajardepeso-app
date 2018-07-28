@@ -3,6 +3,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import { foodItems } from './fake-data/food_items-fake';
 import { diet } from './fake-data/diet-fake';
+import { measurementUnits } from './fake-data/measurement_units-fake';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { diet } from './fake-data/diet-fake';
 export class BackendFakeService implements InMemoryDbService  {
 
   createDb() {
-    return { foodItems, diet };
+    return { foodItems, diet, measurementUnits };
   }
 
 }
