@@ -27,8 +27,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     BrowserModule,
     HttpClientModule,
     SharedModule,
-    DietModule,
     FoodModule,
+    DietModule,
     
     
     AppRoutingModule,
@@ -42,8 +42,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
   providers: [
     SharedModule,
     FoodService,
-
-    
   ],
   bootstrap: [AppComponent]
 })

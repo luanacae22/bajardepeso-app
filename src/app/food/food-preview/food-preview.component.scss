@@ -1,0 +1,46 @@
+:host {
+    
+    // display: flex;
+    
+    header {
+        display: flex;
+
+       
+    }
+    header > *,
+    .food-info > * {
+        width: 50%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    .food-info {
+        
+            
+        display: flex;
+
+        // flex-direction: column;
+        .not-available {
+            color: red;
+        }
+    }
+
+
+    footer {
+        display: flex;
+        &>* {
+            flex-grow: 1;
+            justify-content: space-evenly;
+        }
+    
+        a>button {
+            width: 100%;
+            padding: 1rem;
+        }
+    }
+
+}

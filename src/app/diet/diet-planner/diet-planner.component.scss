@@ -1,4 +1,4 @@
-header, .food-info {
+header {
     
     display: flex;
 
@@ -17,13 +17,6 @@ header, .food-info {
 }
 
 
-.food {
-    header {
-        .not-available {
-            color: red;
-        }
-    }
-}
 * {
     text-align: center;        
 }
@@ -73,7 +66,7 @@ footer {
             justify-content: center;
 
 
-            .food-preview {
+            .food-avatar {
                 position: relative;
                 margin: .5rem;
                 button.remove {

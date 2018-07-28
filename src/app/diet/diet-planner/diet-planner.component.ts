@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
+import { Diet } from "../../diet/diet.model";
 import { Food } from "../../food/food.model";
 import { FoodService } from '../../food/food.service';
 
 enum COMPONENT_STATES {
-  CHOOSE_FOOD = 0,
+  CHOOSE_FOOD = 0,    
   CHOOSE_DAY = 1,
   CHOOSE_MEAL = 2
 };
@@ -18,7 +19,6 @@ enum COMPONENT_STATES {
 })
 export class DietPlannerComponent implements OnInit {
 
-  private quantity: number;
 
   public states = COMPONENT_STATES; 
 
@@ -27,6 +27,11 @@ export class DietPlannerComponent implements OnInit {
   public activeDay: number = null;
 
   public foods: Food[];
+
+
+  public currentFoodObject: any;
+
+  public diet: Diet;
 
   public days = [
     'Lunes',
@@ -52,6 +57,10 @@ export class DietPlannerComponent implements OnInit {
 
     // obtener listado de alimentos
     this.foods = this.route.snapshot.data['foods'] || {};
+    // this.diet = this.route.snapshot.data['diet'] || {};
+    
+
+    console.log(this.diet );
     
     this.foods.map( food => {
       
@@ -62,6 +71,7 @@ export class DietPlannerComponent implements OnInit {
     
     });
 
+
     // antes de usar 'resolver', hacíamos fetch directo
     // this.foodService.fetchFoods()
     // .subscribe( foods => this.foods = foods );
@@ -70,17 +80,11 @@ export class DietPlannerComponent implements OnInit {
   }
 
 
-  handleQuantityChange( quantity ) {
-    console.log(quantity);
+  addFood(payload: Object) {
     
-    this.quantity = quantity; 
-  }
+    this.currentFoodObject = payload;
 
-  addFood( id: number ) {
-    
     this.currentState = this.states.CHOOSE_DAY;
-
-    console.log( "add Food", id, "quantity:", this.quantity );
 
   }
 
@@ -105,8 +109,9 @@ export class DietPlannerComponent implements OnInit {
   chooseMeal( number: number ) {
 
     this.currentState = this.states.CHOOSE_FOOD;
+    let chosenFood = this.foods.find( food => food.id === this.currentFoodObject.id )
 
-    console.log("choose meal", number );
+    console.log("add to meal", number, chosenFood.name  );
     
   }
 

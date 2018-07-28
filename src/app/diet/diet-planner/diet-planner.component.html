@@ -2,81 +2,12 @@
   <div class="choose_foods" *ngSwitchCase="0">
     
     <ul>
-      <article class="food" *ngFor="let food of foods; index as i">
-        
-        <header>
-          
-          <div class="image">
-            <img src="{{food.image}}" alt="">
-          </div>
-          
-          <div class="text">
-            
-            <div class="title">
-              <h4>
-                {{food.name}}
-              </h4>
-            </div>
-            
-            <div class="availability" [ngClass]="{'not-available':food.stock<=0}">
-              <span *ngIf="food.stock>0; else notAvailable">
-                {{food.stock}} disponibles
-              </span>
-              <ng-template #notAvailable>
-                No disponible
-              </ng-template>
-            </div>
-            
-          </div>
-          
-        </header>
-        
-        
-        <section class="food-info">
-          
-          <div class="calory-count">
-            <h3>
-              {{food.calories}} Cal.
-            </h3>
-          </div>
-          
-          <div class="quantity">
-            <label>
-              <span>
-                {{ food.measurement_unit_labels?.plural }}
-              </span>
-              
-              <input #quantityInput type="number"
-              (change)="handleQuantityChange(quantityInput.value)"
-              >
-              
-            </label>
-          </div>
-          
-        </section>
-        
-        
-        <footer>
-          
-          <a [routerLink]="['/alimentos',food.id]">
-            <button>
-              Ver
-            </button>
-          </a>
-          
-          <a [routerLink]="['/alimentos/comprar',food.id]">
-            <button>
-              Comprar
-            </button>
-          </a>
-          
-          <button (click)="addFood(0)">
-            Añadir
-          </button>
-          
-        </footer>
-        
-      </article> 
+      <food-preview
+      *ngFor="let food of foods; index as i"
+      [food]="food"
+      (addFoodEmitter)="addFood($event)"
+      >
+      </food-preview> 
     </ul>
     
     <footer class="day-selector">
@@ -140,7 +71,7 @@
   
   
   <section class="meal_selector" *ngSwitchCase="2">
-    
+<!--     
     <h1>
       {{ days[activeDay] }}
     </h1>
@@ -167,86 +98,16 @@
         </div>
         
         <ul class="food_items">
-            <li class="food-preview">
-                <button class="remove">
-                  <span>
-                    X
-                  </span>
-                </button>
-                <div class="image">
-                  <img src="http://fakeimg.pl/48x48?text=food" alt="">
-                </div>
-              </li>
-              <li class="food-preview">
-                <button class="remove">
-                  <span>
-                    X
-                  </span>
-                </button>
-                <div class="image">
-                  <img src="http://fakeimg.pl/48x48?text=food" alt="">
-                </div>
-              </li>          
-          <li class="food-preview">
-            <button class="remove">
-              <span>
-                X
-              </span>
-            </button>
-            <div class="image">
-              <img src="http://fakeimg.pl/48x48?text=food" alt="">
-            </div>
-          </li>
-          <li class="food-preview">
-            <button class="remove">
-              <span>
-                X
-              </span>
-            </button>
-            <div class="image">
-              <img src="http://fakeimg.pl/48x48?text=food" alt="">
-            </div>
-          </li>
-          <li class="food-preview">
-            <button class="remove">
-              <span>
-                X
-              </span>
-            </button>
-            <div class="image">
-              <img src="http://fakeimg.pl/48x48?text=food" alt="">
-            </div>
-          </li>
-          <li class="food-preview">
-            <button class="remove">
-              <span>
-                X
-              </span>
-            </button>
-            <div class="image">
-              <img src="http://fakeimg.pl/48x48?text=food" alt="">
-            </div>
-          </li>
-          <li class="food-preview">
-            <button class="remove">
-              <span>
-                X
-              </span>
-            </button>
-            <div class="image">
-              <img src="http://fakeimg.pl/48x48?text=food" alt="">
-            </div>
-          </li>                                                                    
-          <li class="food-preview">
-            <button class="remove">
-              <span>
-                X
-              </span>
-            </button>
-            <div class="image">
-              <img src="http://fakeimg.pl/48x48?text=food" alt="">
-            </div>
-          </li>
+            <li class="food-avatar" *ngFor="food_item of meal.food_items">
+              <button class="remove">
+                <span>
+                  X
+                </span>
+              </button>
+              <div class="image">
+                <img src="{{food_item.image}}" alt="">
+              </div>
+            </li>
         </ul>
         
       </li>
@@ -255,6 +116,7 @@
     <button (click)="returnToDaySelector()">
       Regresar
     </button>
+  -->
   </section>
   
   
