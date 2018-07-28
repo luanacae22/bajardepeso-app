@@ -9,5 +9,5 @@ export interface Food {
     ration_quantity?: Number,
     measurement_unit?: Number,
     associated_products?: Number[],
-    measurement_unit_labels?: Object
+    measurement_unit_labels?: any
 }

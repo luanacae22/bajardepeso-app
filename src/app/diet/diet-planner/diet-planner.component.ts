@@ -112,10 +112,24 @@ export class DietPlannerComponent implements OnInit {
 
   chooseMeal( number: number ) {
 
-    this.currentState = this.states.CHOOSE_FOOD;
+    
     let chosenFood = this.foods.find( food => food.id === this.currentFoodObject.id )
-
+    
     console.log("add to meal", number, chosenFood.name  );
+    
+    this.dayFoodItems[number].push( chosenFood )
+    
+    setTimeout( () => {
+  
+      alert(`Añadiste ${this.currentFoodObject.quantity} ${chosenFood.measurement_unit_labels.plural} de ${chosenFood.name} a ${this.meals[number]}`)
+  
+      setTimeout( () => {
+
+        this.currentState = this.states.CHOOSE_FOOD;
+
+      }, 500)
+      
+    }, 500)
     
   }
 
