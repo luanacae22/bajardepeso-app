@@ -33,5 +33,41 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Queso',
         calories: 5555,
         stock: 1,
-    }
+    },
+    {
+        id: 5,
+        name: 'Pollo',
+        image: 'http://fakeimg.pl/300x300?text=Pollo',
+        calories: 5555,
+        stock: 1,
+    },
+    {
+        id: 6,
+        name: 'Espinaca',
+        image: 'http://fakeimg.pl/300x300?text=Espinaca',
+        calories: 5555,
+        stock: 1,
+    },
+    {
+        id: 7,
+        name: 'Frijoles',
+        image: 'http://fakeimg.pl/300x300?text=Frijoles',
+        calories: 5555,
+        stock: 1,
+    },
+    {
+        id: 8,
+        name: 'Huevo',
+        image: 'http://fakeimg.pl/300x300?text=Huevo',
+        calories: 5555,
+        stock: 1,
+    },
+    {
+        id: 9,
+        name: 'Jamón',
+        image: 'http://fakeimg.pl/300x300?text=Jamón',
+        calories: 5555,
+        stock: 1,
+    },
+    
 ];
