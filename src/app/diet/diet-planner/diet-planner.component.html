@@ -71,22 +71,22 @@
   
   
   <section class="meal_selector" *ngSwitchCase="2">
-<!--     
+    
     <h1>
       {{ days[activeDay] }}
     </h1>
     
     <ul class="meal_list">
-      <li *ngFor="let meal of meals; index as i" (click)="chooseMeal(i)">
+      <li *ngFor="let meal of diet.days[activeDay].meals; index as i" (click)="chooseMeal(i)">
         
         <div class="icon-text">
           <i class="fa fa-icon"></i>
           <span class="label">
-            {{meal}}
+            {{meals[i]}}
           </span>
         </div>
         
-        <div class="calories_count">
+        <div class="food_items_info">
           <h5>
             <span class="number">
               9999
@@ -95,10 +95,13 @@
               Cal.
             </span>
           </h5>
+          <h6>
+            {{meal.food_items.length}} elementos
+
+          </h6>
         </div>
-        
         <ul class="food_items">
-            <li class="food-avatar" *ngFor="food_item of meal.food_items">
+            <li class="food-avatar" *ngFor="let food_item of dayFoodItems[i]; index as j">
               <button class="remove">
                 <span>
                   X
@@ -116,7 +119,6 @@
     <button (click)="returnToDaySelector()">
       Regresar
     </button>
-  -->
   </section>
   
   

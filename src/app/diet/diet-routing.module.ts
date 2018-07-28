@@ -10,7 +10,7 @@ const routes: Routes = [
     component: DietPlannerComponent,
     resolve: {
       foods: FoodListResolver,
-      // diet: DietResolver
+      diet: DietResolver
     }
   }
 ];

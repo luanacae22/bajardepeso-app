@@ -28,6 +28,7 @@ export class DietPlannerComponent implements OnInit {
 
   public foods: Food[];
 
+  public dayFoodItems: Food[][];
 
   public currentFoodObject: any;
 
@@ -53,11 +54,13 @@ export class DietPlannerComponent implements OnInit {
   
   constructor(private route: ActivatedRoute, private foodService: FoodService) { }
 
+
+
   ngOnInit() {
 
     // obtener listado de alimentos
     this.foods = this.route.snapshot.data['foods'] || {};
-    // this.diet = this.route.snapshot.data['diet'] || {};
+    this.diet = this.route.snapshot.data['diet'] || {};
     
 
     console.log(this.diet );
@@ -102,7 +105,8 @@ export class DietPlannerComponent implements OnInit {
 
     this.activeDay = number; 
 
-    console.log("choose day", number );
+    this.dayFoodItems = this.getDayFoodItems( this.diet.days[number] ); 
+
     
   }
 
@@ -112,6 +116,30 @@ export class DietPlannerComponent implements OnInit {
     let chosenFood = this.foods.find( food => food.id === this.currentFoodObject.id )
 
     console.log("add to meal", number, chosenFood.name  );
+    
+  }
+
+
+
+  getDayFoodItems( day ) : Food[][] {
+
+    let dayMeals = [] 
+  
+    day.meals.map( meal => {
+      
+      let meal_items = [];
+
+      meal.food_items.map( food_item => {
+        meal_items.push(
+          this.foods.find( db_food => db_food.id === food_item.id)
+        )
+      })
+      
+      dayMeals.push(meal_items);
+
+    })
+
+    return dayMeals;
     
   }
 
