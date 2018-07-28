@@ -5,7 +5,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Tortilla',
         calories: 1111,
         stock: 2,
-        measurement_unity: 2
+        measurement_unit: 2
     },
     {
         id: 1,
@@ -13,7 +13,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Pan',
         calories: 2222,
         stock: 3,
-        measurement_unity: 2
+        measurement_unit: 2
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Leche',
         calories: 3333,
         stock: 0,
-        measurement_unity: 1
+        measurement_unit: 1
     },
     {
         id: 3,
@@ -29,7 +29,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Manzana',
         calories: 4444,
         stock: 1,
-        measurement_unity: 2
+        measurement_unit: 2
     },
     {
         id: 4,
@@ -37,7 +37,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Queso',
         calories: 5555,
         stock: 1,
-        measurement_unity: 0
+        measurement_unit: 0
     },
     {
         id: 5,
@@ -45,7 +45,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Pollo',
         calories: 5555,
         stock: 1,
-        measurement_unity: 0
+        measurement_unit: 0
     },
     {
         id: 6,
@@ -53,7 +53,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Espinaca',
         calories: 5555,
         stock: 1,
-        measurement_unity: 0
+        measurement_unit: 0
     },
     {
         id: 7,
@@ -61,7 +61,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Frijoles',
         calories: 5555,
         stock: 1,
-        measurement_unity: 0
+        measurement_unit: 0
     },
     {
         id: 8,
@@ -69,7 +69,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Huevo',
         calories: 5555,
         stock: 1,
-        measurement_unity: 2
+        measurement_unit: 2
     },
     {
         id: 9,
@@ -77,7 +77,7 @@ export let foodItems = [
         image: 'http://fakeimg.pl/300x300?text=Jamón',
         calories: 5555,
         stock: 1,
-        measurement_unity: 0
+        measurement_unit: 0
     },
     
 ];
