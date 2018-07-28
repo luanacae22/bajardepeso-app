@@ -28,7 +28,8 @@ export class DietPlannerComponent implements OnInit {
 
   public foods: Food[];
 
-  public dayFoodItems: Food[][];
+  public mealFoodItems: Food[][];
+  public mealCalories: number[];
 
   public currentFoodObject: any;
 
@@ -105,9 +106,13 @@ export class DietPlannerComponent implements OnInit {
 
     this.activeDay = number; 
 
-    this.dayFoodItems = this.getDayFoodItems( this.diet.days[number] ); 
+    this.mealFoodItems = this.getDayFoodItems( this.diet.days[number] ); 
 
+    this.mealCalories = this.calculateMealCalories();
     
+    console.log(this.mealFoodItems);
+    
+    this.test()
   }
 
   chooseMeal( number: number ) {
@@ -117,8 +122,10 @@ export class DietPlannerComponent implements OnInit {
     
     console.log("add to meal", number, chosenFood.name  );
     
-    this.dayFoodItems[number].push( chosenFood )
+    this.mealFoodItems[number].push( chosenFood )
     
+    this.mealCalories = this.calculateMealCalories();
+
     setTimeout( () => {
   
       alert(`Añadiste ${this.currentFoodObject.quantity} ${chosenFood.measurement_unit_labels.plural} de ${chosenFood.name} a ${this.meals[number]}`)
@@ -127,7 +134,7 @@ export class DietPlannerComponent implements OnInit {
 
         this.currentState = this.states.CHOOSE_FOOD;
 
-      }, 500)
+      }, 1500)
       
     }, 500)
     
@@ -157,4 +164,26 @@ export class DietPlannerComponent implements OnInit {
     
   }
 
+  calculateMealCalories() {
+    
+    let mealsCaloriesArray = [];
+
+    this.mealFoodItems.forEach(d=>{
+
+      mealsCaloriesArray.push(
+
+        // explicacion de reduce https://codepen.io/furenku/pen/xJPrqK
+
+        d.reduce( (p,n) => {
+          return p += +n.calories
+        }, 0 )
+      )
+
+    })    
+
+    return mealsCaloriesArray;
+
+  }
+
+  
 }

@@ -89,19 +89,19 @@
         <div class="food_items_info">
           <h5>
             <span class="number">
-              9999
+              {{mealCalories[i]}}
             </span>
             <span class="unit">
               Cal.
             </span>
           </h5>
           <h6>
-            {{meal.food_items.length}} elementos
+            {{mealFoodItems[i].length}} elementos
 
           </h6>
         </div>
         <ul class="food_items">
-            <li class="food-avatar" *ngFor="let food_item of dayFoodItems[i]; index as j">
+            <li class="food-avatar" *ngFor="let food_item of mealFoodItems[i]; index as j">
               <button class="remove">
                 <span>
                   X

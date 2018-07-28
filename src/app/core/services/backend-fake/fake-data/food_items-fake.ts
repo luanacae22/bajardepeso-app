@@ -3,7 +3,7 @@ export let foodItems = [
         id: 0,
         name: 'Tortilla',
         image: 'http://fakeimg.pl/300x300?text=Tortilla',
-        calories: 1111,
+        calories: 111,
         stock: 2,
         measurement_unit: 2
     },
