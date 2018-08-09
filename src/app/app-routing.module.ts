@@ -12,10 +12,13 @@ import { DietModule } from "./diet/diet.module";
 
 import { FoodModule } from "./food/food.module";
 
+import { ObjetivesComponent } from "./objetives/objetives.component";
+
 const routes = [
     { path: '', component: HomePageComponent },
     { path: 'alimentos', loadChildren: './food/food.module#FoodModule' }, 
     { path: 'dieta', loadChildren: './diet/diet.module#DietModule' },
+    { path: 'objetivos', component:ObjetivesComponent },
     { path: '**', component: NotFoundComponent },
 ];
 
