@@ -1,0 +1,58 @@
+<form (ngSubmit)="onSubmit(forma)" #forma="ngForm">
+  <div>
+    <h3>Nuevo objetivo</h3>
+    <input #objectiveDescription type="text"
+        placeholder="Description"        
+        name="description"
+        id="description"
+        ngModel
+                >
+    <input #dateExpected type="date"                    
+        name="limitDate"
+        id="limitDate"
+        ngModel
+                >
+    <button type="submit" >Agregar</button>
+  </div>
+</form>
+<div>
+  <h3>Objetivos Planeados</h3>
+  <table>
+    <thead>
+      <th>Objetivo</th>
+      <th>Fecha para terminar</th>
+      <th>Terminado</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objective of ObjetivosPorCumplir; index as i">
+        <td>{{objective.description}}</td>
+        <td>{{objective.limitDate | amLocale:'es' | amDateFormat:'DD/MM/YYYY'}}</td>
+        <td> <input type="checkbox" (change)="handleObjectiveFinished(objective)" /></td>
+      </tr>
+    </tbody>
+  </table>  
+  <!-- <div *ngFor="let objective of ObjetivosPorCumplir; index as i">
+      <span>
+        <label for="">{{objective.description}}</label>
+        <label for="">{{objective.limitDate | amLocale:'es' | amDateFormat:'DD/MM/YYYY'}}</label>
+        <input type="checkbox"/>
+      </span>
+  </div>       -->
+</div>
+<div>
+  <h3>Objetivos Terminados</h3>
+  <table>
+      <thead>
+          <th>Objetivo</th>
+          <th>Fecha limite</th>
+          <th>Fecha de termino</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let objective of ObjetivosCumplidos; index as i">
+            <td>{{objective.description}}</td>
+            <td>{{objective.limitDate | amLocale:'es' | amDateFormat:'DD/MM/YYYY'}}</td>
+            <td>{{objective.finishDate |  amDateFormat:'DD/MM/YYYY'}}</td>
+          </tr>
+        </tbody>
+  </table>
+</div>
