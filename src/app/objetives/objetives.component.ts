@@ -48,7 +48,8 @@ export class ObjetivesComponent implements OnInit {
   }
   onSubmit(form:NgForm){
     // console.log(form.value)
-    const objetivo= new Objective(Number.parseInt(Math.random()*1000)
+    const id=Number.parseInt(String(Math.random()*1000))
+    const objetivo= new Objective(id
                                   ,form.value.description
                                   ,form.value.limitDate
                                   ,null

@@ -1,4 +1,15 @@
 
+header 
+{
+    & >*{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-direction: row;        
+        max-height: 376px;
+    }
+}
+
 .destacados{
     display: flex;
     & > * {

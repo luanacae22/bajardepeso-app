@@ -4,7 +4,7 @@ export let foodItems = [
         name: 'Tortilla',
         image: 'http://fakeimg.pl/300x300?text=Tortilla',
         calories: 1111,
-        stock: 2,
+        stock: 5,
     },
     {
         id: 1,
@@ -25,7 +25,7 @@ export let foodItems = [
         name: 'Manzana',
         image: 'http://fakeimg.pl/300x300?text=Manzana',
         calories: 4444,
-        stock: 1,
+        stock: 10,
     },
     {
         id: 4,
