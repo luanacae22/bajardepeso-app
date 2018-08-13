@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
+import { Diet } from "../../diet/diet.model";
 import { Food } from "../../food/food.model";
+import { FoodService } from '../../food/food.service';
 
 enum COMPONENT_STATES {
-  CHOOSE_FOOD = 0,
+  CHOOSE_FOOD = 0,    
   CHOOSE_DAY = 1,
   CHOOSE_MEAL = 2
 };
@@ -17,7 +19,6 @@ enum COMPONENT_STATES {
 })
 export class DietPlannerComponent implements OnInit {
 
-  private quantity: number;
 
   public states = COMPONENT_STATES; 
 
@@ -26,6 +27,13 @@ export class DietPlannerComponent implements OnInit {
   public activeDay: number = null;
 
   public foods: Food[];
+
+  public mealFoodItems: Food[][];
+  public mealCalories: number[];
+
+  public currentFoodObject: any;
+
+  public diet: Diet;
 
   public days = [
     'Lunes',
@@ -45,13 +53,29 @@ export class DietPlannerComponent implements OnInit {
     'Cena',
   ];
   
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private foodService: FoodService) { }
+
+
 
   ngOnInit() {
 
     // obtener listado de alimentos
     this.foods = this.route.snapshot.data['foods'] || {};
+    this.diet = this.route.snapshot.data['diet'] || {};
     
+
+    console.log(this.diet );
+    
+    this.foods.map( food => {
+      
+      this.foodService.fetchMeasurementUnitData(food.measurement_unit)
+      .subscribe( measurementUnit => {
+        food.measurement_unit_labels = measurementUnit.labels;
+      })
+    
+    });
+
+
     // antes de usar 'resolver', hacíamos fetch directo
     // this.foodService.fetchFoods()
     // .subscribe( foods => this.foods = foods );
@@ -60,17 +84,11 @@ export class DietPlannerComponent implements OnInit {
   }
 
 
-  handleQuantityChange( quantity ) {
-    console.log(quantity);
+  addFood(payload: Object) {
     
-    this.quantity = quantity; 
-  }
+    this.currentFoodObject = payload;
 
-  addFood( id: number ) {
-    
     this.currentState = this.states.CHOOSE_DAY;
-
-    console.log( "add Food", id, "quantity:", this.quantity );
 
   }
 
@@ -88,16 +106,84 @@ export class DietPlannerComponent implements OnInit {
 
     this.activeDay = number; 
 
-    console.log("choose day", number );
+    this.mealFoodItems = this.getDayFoodItems( this.diet.days[number] ); 
+
+    this.mealCalories = this.calculateMealCalories();
     
+    console.log(this.mealFoodItems);
+    
+    this.test()
   }
 
   chooseMeal( number: number ) {
 
-    this.currentState = this.states.CHOOSE_FOOD;
+    
+    let chosenFood = this.foods.find( food => food.id === this.currentFoodObject.id )
+    
+    console.log("add to meal", number, chosenFood.name  );
+    
+    this.mealFoodItems[number].push( chosenFood )
+    
+    this.mealCalories = this.calculateMealCalories();
 
-    console.log("choose meal", number );
+    setTimeout( () => {
+  
+      alert(`Añadiste ${this.currentFoodObject.quantity} ${chosenFood.measurement_unit_labels.plural} de ${chosenFood.name} a ${this.meals[number]}`)
+  
+      setTimeout( () => {
+
+        this.currentState = this.states.CHOOSE_FOOD;
+
+      }, 1500)
+      
+    }, 500)
     
   }
 
+
+
+  getDayFoodItems( day ) : Food[][] {
+
+    let dayMeals = [] 
+  
+    day.meals.map( meal => {
+      
+      let meal_items = [];
+
+      meal.food_items.map( food_item => {
+        meal_items.push(
+          this.foods.find( db_food => db_food.id === food_item.id)
+        )
+      })
+      
+      dayMeals.push(meal_items);
+
+    })
+
+    return dayMeals;
+    
+  }
+
+  calculateMealCalories() {
+    
+    let mealsCaloriesArray = [];
+
+    this.mealFoodItems.forEach(d=>{
+
+      mealsCaloriesArray.push(
+
+        // explicacion de reduce https://codepen.io/furenku/pen/xJPrqK
+
+        d.reduce( (p,n) => {
+          return p += +n.calories
+        }, 0 )
+      )
+
+    })    
+
+    return mealsCaloriesArray;
+
+  }
+
+  
 }

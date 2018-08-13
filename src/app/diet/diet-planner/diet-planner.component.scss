@@ -1,4 +1,4 @@
-header, .food-info {
+header {
     
     display: flex;
 
@@ -17,13 +17,6 @@ header, .food-info {
 }
 
 
-.food {
-    header {
-        .not-available {
-            color: red;
-        }
-    }
-}
 * {
     text-align: center;        
 }
@@ -64,8 +57,10 @@ footer {
         .icon-text {
             width: 30%;
         }
-        .calories_count {
+        .food_items_info {
             width: 20%;
+            display: flex;
+            flex-direction: column;
         }
         .food_items {
             width: 50%;
@@ -73,9 +68,13 @@ footer {
             justify-content: center;
 
 
-            .food-preview {
+            .food-avatar {
                 position: relative;
                 margin: .5rem;
+                img {
+                    width: 32px;
+                    height: 32px;
+                }
                 button.remove {
                     position: absolute;
                     top: -.5rem;

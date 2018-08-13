@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
+import { MeasurementUnit } from "../shared/models/measurement-unit.model";
 import { Food } from "./food.model";
 import { Observable } from 'rxjs';
 
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 export class FoodService {
 
   private endpointUrl: string = 'api/foodItems';
+  private measurementUnitsEndpointUrl: string = 'api/measurementUnits';
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +27,15 @@ export class FoodService {
     return this.http
     .get<Food>(`${this.endpointUrl}/${food_id}/`)
     
+  }
+
+  
+
+  fetchMeasurementUnitData( id: Number ) {
+
+    return this.http
+    .get<MeasurementUnit>(`${this.measurementUnitsEndpointUrl}/${id}/`)
+      
   }
 
 }

@@ -3,14 +3,9 @@ export let foodItems = [
         id: 0,
         name: 'Tortilla',
         image: 'http://fakeimg.pl/300x300?text=Tortilla',
-<<<<<<< HEAD
-        calories: 1111,
-        stock: 5,
-=======
         calories: 111,
         stock: 2,
         measurement_unit: 2
->>>>>>> development
     },
     {
         id: 1,
@@ -33,12 +28,8 @@ export let foodItems = [
         name: 'Manzana',
         image: 'http://fakeimg.pl/300x300?text=Manzana',
         calories: 4444,
-<<<<<<< HEAD
-        stock: 10,
-=======
         stock: 1,
         measurement_unit: 2
->>>>>>> development
     },
     {
         id: 4,

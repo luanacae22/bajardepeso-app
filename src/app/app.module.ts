@@ -16,6 +16,7 @@ import { SharedModule } from "./shared/shared.module";
 import { BackendFakeService } from "./core/services/backend-fake/backend-fake.service";
 
 import { FoodService } from "./food/food.service";
+import { DietService } from "./diet/diet.service";
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ObjetivesComponent } from './objetives/objetives.component';
@@ -31,10 +32,14 @@ import { ObjetivesComponent } from './objetives/objetives.component';
     HttpClientModule,
     MomentModule,
     SharedModule,
+<<<<<<< HEAD
+=======
     FormsModule,
     ReactiveFormsModule,
     DietModule,
+>>>>>>> objetivos
     FoodModule,
+    DietModule,
     
     
     AppRoutingModule,
@@ -48,8 +53,7 @@ import { ObjetivesComponent } from './objetives/objetives.component';
   providers: [
     SharedModule,
     FoodService,
-
-    
+    DietService
   ],
   bootstrap: [AppComponent]
 })
