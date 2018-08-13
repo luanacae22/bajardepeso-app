@@ -111,8 +111,7 @@ export class DietPlannerComponent implements OnInit {
     this.mealCalories = this.calculateMealCalories();
     
     console.log(this.mealFoodItems);
-    
-    this.test()
+        
   }
 
   chooseMeal( number: number ) {

@@ -7,6 +7,10 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { BrowserAnimationsModule  } from "@angular/platform-browser/animations";
+import { MaterialModule } from './material.module';
+import 'hammerjs';
+
 import { HomePageComponent } from "./home/home-page/home-page.component";
 
 import { DietModule } from "./diet/diet.module";
@@ -21,6 +25,8 @@ import { DietService } from "./diet/diet.service";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ObjetivesComponent } from './objetives/objetives.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,16 +36,14 @@ import { ObjetivesComponent } from './objetives/objetives.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     MomentModule,
     SharedModule,
-<<<<<<< HEAD
-=======
     FormsModule,
     ReactiveFormsModule,
     DietModule,
->>>>>>> objetivos
     FoodModule,
-    DietModule,
     
     
     AppRoutingModule,
