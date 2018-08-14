@@ -1,9 +1,10 @@
 // import { MeasurementUnit } from "../measurement-unit/measurement-unit.model";
 
-export interface Food {
+export interface FoodProduct {
     id: number,
     name: String,
     image: String,
+    stock?: number,
     calories?: number,
     ration_quantity?: number,
     measurement_unit?: number,

@@ -24,6 +24,7 @@ import { DietService } from "./diet/diet.service";
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ObjetivesComponent } from './objetives/objetives.component';
+import { FoodProductService } from './food/food-product.service';
 
 
 
@@ -57,6 +58,7 @@ import { ObjetivesComponent } from './objetives/objetives.component';
   providers: [
     SharedModule,
     FoodService,
+    FoodProductService,
     DietService
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
-import { Diet } from "../../diet/diet.model";
+import { Diet } from "../diet.model";
 import { Food } from "../../food/food.model";
 import { FoodService } from '../../food/food.service';
 

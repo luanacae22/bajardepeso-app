@@ -10,13 +10,13 @@
     <input #dateExpected type="date"                    
         name="limitDate"
         id="limitDate"
-        ngModel
+        [ngModel]="todayDate"        
                 >
     <button type="submit" >Agregar</button>
   </div>
 </form>
 <div>
-  <h3>Objetivos Planeados</h3>
+  <h3>Objetivos Planeados </h3>
   <table>
     <thead>
       <th>Objetivo</th>

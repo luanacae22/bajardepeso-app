@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Objective } from './objetctive.model';
-import { NgForm } from '../../../node_modules/@angular/forms';
+import { Objective } from './objective.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'objetives',
@@ -48,14 +48,24 @@ export class ObjetivesComponent implements OnInit {
   }
   onSubmit(form:NgForm){
     // console.log(form.value)
-    const id=Number.parseInt(String(Math.random()*1000))
-    const objetivo= new Objective(id
-                                  ,form.value.description
-                                  ,form.value.limitDate
-                                  ,null
-                                  ,false)
-    this.ObjetivosPorCumplir.push(objetivo)
+
+    if (!!form.value.description){
+      const id=Number.parseInt(String(Math.random()*1000))
+      const objetivo= new Objective(id
+                                    ,form.value.description
+                                    ,form.value.limitDate
+                                    ,null
+                                    ,false)
+      this.ObjetivosPorCumplir.push(objetivo)
+    }    
     // console.log(this.ObjetivosPorCumplir)
+  }
+
+  get todayDate(){
+    let date = new Date()
+    let datestr = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} `
+    // console.log(datestr)
+    return datestr
   }
   
 }

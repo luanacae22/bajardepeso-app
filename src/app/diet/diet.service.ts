@@ -14,7 +14,7 @@ export class DietService {
   constructor(private http: HttpClient) { }
 
   fetchDiet( diet_id: number ): Observable<any> {
-console.log("fetchDiet", diet_id);
+// console.log("fetchDiet", diet_id);
 
     return this.http
     .get<any>(`${this.endpointUrl}/${diet_id}/`)

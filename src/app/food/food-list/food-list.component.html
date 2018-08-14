@@ -1,3 +1,15 @@
-<p>
-  food-list works!
-</p>
+<header>
+  <nav>
+    <ul>
+    <li><button (click)="displayAllFoods()">Todos</button></li>
+    <li><button (click)="displayDietFoods()">En mi dieta</button></li>    
+    </ul>
+  </nav>
+</header>
+
+<ul class="food-list">
+  <li *ngFor="let food of display_foods" >
+    {{food.name}}
+    <a  [routerLink]="['/alimentos',food.id,'comprar']" ><button *ngIf="!!food.associated_products">Comprar</button></a> 
+  </li>
+</ul>
